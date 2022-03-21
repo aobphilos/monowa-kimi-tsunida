@@ -1,0 +1,32 @@
+{
+  "root": "libs/shared/greeter",
+  "sourceRoot": "libs/shared/greeter/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/greeter",
+        "main": "libs/shared/greeter/src/index.ts",
+        "tsConfig": "libs/shared/greeter/tsconfig.lib.json",
+        "assets": ["libs/shared/greeter/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/greeter/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/greeter"],
+      "options": {
+        "jestConfig": "libs/shared/greeter/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
