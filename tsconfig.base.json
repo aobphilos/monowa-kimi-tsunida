@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@monowa/greeter": ["libs/shared/greeter/src/index.ts"],
+      "@monowa/messages": ["libs/services/messages/src/index.ts"],
+      "@monowa/users": ["libs/services/users/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
