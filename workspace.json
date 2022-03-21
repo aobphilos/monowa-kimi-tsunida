@@ -1,4 +1,10 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "message-service": "apps/message-service",
+    "services-messages": "libs/services/messages",
+    "services-users": "libs/services/users",
+    "shared-greeter": "libs/shared/greeter",
+    "user-service": "apps/user-service"
+  }
 }
