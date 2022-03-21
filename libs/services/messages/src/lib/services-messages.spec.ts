@@ -1,7 +1,7 @@
-import { servicesMessages } from './services-messages';
+import { getMessage } from './services-messages';
 
-describe('servicesMessages', () => {
+describe('getMessage', () => {
   it('should work', () => {
-    expect(servicesMessages()).toEqual('services-messages');
+    expect(getMessage()).toEqual('Hello from message service');
   });
 });

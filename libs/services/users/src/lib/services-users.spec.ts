@@ -1,7 +1,7 @@
-import { servicesUsers } from './services-users';
+import { getUsers } from './services-users';
 
-describe('servicesUsers', () => {
+describe('getUsers', () => {
   it('should work', () => {
-    expect(servicesUsers()).toEqual('services-users');
+    expect(getUsers()).toEqual('Hello from users service');
   });
 });

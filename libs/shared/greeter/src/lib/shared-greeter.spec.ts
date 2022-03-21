@@ -1,7 +1,7 @@
-import { sharedGreeter } from './shared-greeter';
+import { greeting } from './shared-greeter';
 
-describe('sharedGreeter', () => {
+describe('greeting', () => {
   it('should work', () => {
-    expect(sharedGreeter()).toEqual('shared-greeter');
+    expect(greeting('Demo')).toEqual('Hello, Demo!');
   });
 });
