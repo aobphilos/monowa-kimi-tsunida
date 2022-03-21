@@ -1,0 +1,28 @@
+"use strict";
+
+import { Service, ServiceBroker } from "moleculer";
+import { PubSubMixin } from "../mixins/pubsub.mixin";
+
+export default class ConsumerService extends Service {
+	public constructor(public broker: ServiceBroker) {
+		super(broker);
+		this.parseServiceSchema({
+			name: "consumer",
+			mixins: [
+				new PubSubMixin({
+					credentials: process.env.GOOGLE_PUB_SUB_CREDENTIALS,
+					tempFolder: "/tmp/credentials",
+				}),
+			],
+			subscribers: [
+				"megabot.message.incoming",
+				async (message: unknown) => {
+					this.logger.info(
+						"Subscriber: megabot.message.incoming",
+						message
+					);
+				},
+			],
+		});
+	}
+}

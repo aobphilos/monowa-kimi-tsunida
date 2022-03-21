@@ -1,14 +1,12 @@
-"use strict";
-
-import {Service, ServiceBroker, Context} from "moleculer";
+import { getMessage } from "@monowa/message";
+import { Service, ServiceBroker, Context } from "moleculer";
 
 export default class GreeterService extends Service {
-
 	public constructor(public broker: ServiceBroker) {
 		super(broker);
 		this.parseServiceSchema({
 			name: "greeter",
-			actions:{
+			actions: {
 				/**
 				 * Say a 'Hello' action.
 				 *
@@ -31,7 +29,9 @@ export default class GreeterService extends Service {
 					params: {
 						name: "string",
 					},
-					async handler(ctx: Context<{name: string}>): Promise<string> {
+					async handler(
+						ctx: Context<{ name: string }>
+					): Promise<string> {
 						return this.ActionWelcome(ctx.params.name);
 					},
 				},
@@ -41,7 +41,7 @@ export default class GreeterService extends Service {
 
 	// Action
 	public ActionHello(): string {
-		return "Hello Moleculer";
+		return getMessage("Call from Moleculer");
 	}
 
 	public ActionWelcome(name: string): string {

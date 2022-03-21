@@ -1,0 +1,22 @@
+@hostname = http://localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@createdAt = {{$datetime iso8601}}
+
+# The following are the default values for the request headers
+# @name sayHello
+GET {{host}}/api/greeter/hello HTTP/1.1
+Content-Type: {{contentType}}
+
+# Register Session
+# @name getAccessToken
+# POST {{host}}/api/v3/sessions HTTP/1.1
+# content-type: {{contentType}}
+# x-api-key: {{apiKey}}
+
+# {
+#     "userId": "{{username}}",
+#     "displayName": "{{username}}",
+#     "deviceId": "client-z4700-MacOS"
+# }

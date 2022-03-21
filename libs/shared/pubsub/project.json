@@ -1,0 +1,32 @@
+{
+  "root": "libs/shared/pubsub",
+  "sourceRoot": "libs/shared/pubsub/src",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/pubsub",
+        "main": "libs/shared/pubsub/src/index.ts",
+        "tsConfig": "libs/shared/pubsub/tsconfig.lib.json",
+        "assets": ["libs/shared/pubsub/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/pubsub/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/pubsub"],
+      "options": {
+        "jestConfig": "libs/shared/pubsub/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,17 +1,16 @@
 {
   "npmScope": "monowa",
   "affected": {
-    "defaultBase": "main"
+    "defaultBase": "develop"
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
+    "defaultCollection": "@nrwl/node"
   },
   "implicitDependencies": {
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"
-    },
-    ".eslintrc.json": "*"
+    }
   },
   "tasksRunnerOptions": {
     "default": {
@@ -28,5 +27,14 @@
         "projects": "dependencies"
       }
     ]
-  }
+  },
+  "generators": {
+    "@nrwl/js:library": {
+      "buildable": true
+    },
+    "@nrwl/node:library": {
+      "buildable": true
+    }
+  },
+  "defaultProject": "bot-api"
 }

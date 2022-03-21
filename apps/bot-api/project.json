@@ -1,0 +1,70 @@
+{
+	"root": "apps/bot-api",
+	"sourceRoot": "apps/bot-api/src",
+	"projectType": "application",
+	"targets": {
+		"build": {
+			"executor": "@nrwl/js:tsc",
+			"outputs": ["{options.outputPath}"],
+			"options": {
+				"outputPath": "dist/apps/bot-api",
+				"main": "apps/bot-api/src/index.ts",
+				"tsConfig": "apps/bot-api/tsconfig.app.json",
+				"assets": ["apps/bot-api/*.md"],
+				"buildableProjectDepsInPackageJsonType": "dependencies"
+			},
+			"configurations": {
+				"production": {
+					"optimization": true,
+					"extractLicenses": true,
+					"inspect": false,
+					"fileReplacements": [
+						{
+							"replace": "apps/bot-api/src/environments/environment.ts",
+							"with": "apps/bot-api/src/environments/environment.prod.ts"
+						}
+					]
+				}
+			}
+		},
+		"pre-run": {
+			"executor": "@nrwl/workspace:run-commands",
+			"options": {
+				"cwd": "apps/bot-api",
+				"command": "npm install"
+			}
+		},
+		"serve": {
+			"executor": "@nrwl/workspace:run-commands",
+			"configurations": {
+				"production": {
+					"commands": ["echo 'Production serve not yet implemented'"]
+				}
+			},
+			"options": {
+				"commands": [
+					"nx run bot-api:build",
+					"nx run bot-api:pre-run",
+					"nx run bot-api:dev"
+				],
+				"parallel": false
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["apps/bot-api/**/*.ts"]
+			}
+		},
+		"test": {
+			"executor": "@nrwl/jest:jest",
+			"outputs": ["coverage/apps/bot-api"],
+			"options": {
+				"jestConfig": "apps/bot-api/jest.config.js",
+				"passWithNoTests": true
+			}
+		}
+	},
+	"tags": ["bot-api", "web-app"]
+}

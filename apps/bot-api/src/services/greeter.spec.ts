@@ -1,7 +1,7 @@
 "use strict";
 
-import { Errors, ServiceBroker} from "moleculer";
-import TestService from "../../../services/greeter.service";
+import { Errors, ServiceBroker } from "moleculer";
+import TestService from "../../src/services/greeter.service";
 
 describe("Test 'greeter' service", () => {
 	const broker = new ServiceBroker({ logger: false });
@@ -11,16 +11,13 @@ describe("Test 'greeter' service", () => {
 	afterAll(() => broker.stop());
 
 	describe("Test 'greeter.hello' action", () => {
-
-		it("should return with 'Hello Moleculer'", async () => {
+		it("should return with 'Call from Moleculer'", async () => {
 			const res = await broker.call("greeter.hello");
-			expect(res).toBe("Hello Moleculer");
+			expect(res).toContain("Call from Moleculer");
 		});
-
 	});
 
 	describe("Test 'greeter.welcome' action", () => {
-
 		it("should return with 'Welcome'", async () => {
 			const res = await broker.call("greeter.welcome", { name: "Adam" });
 			expect(res).toBe("Welcome, Adam");
@@ -34,7 +31,5 @@ describe("Test 'greeter' service", () => {
 				expect(err).toBeInstanceOf(Errors.ValidationError);
 			}
 		});
-
 	});
-
 });
